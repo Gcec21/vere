@@ -1181,10 +1181,10 @@ _king_link_run(c3_c* bin_c)
     return -1;
   }
 
-  ret_i = link(bin_c, lin_c);
+  ret_i = symlink(bin_c, lin_c);
 
   if ( ret_i ) {
-    fprintf(stderr, "vere: link %s -> %s failed: %s\n",
+    fprintf(stderr, "vere: symlink %s -> %s failed: %s\n",
                     lin_c, bin_c, strerror(errno));
     c3_free(lin_c);
     return -1;
