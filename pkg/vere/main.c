@@ -196,14 +196,15 @@ _main_init(void)
   u3_Host.ops_u.lom_y = 31;
   u3_Host.ops_u.jum_y = 23;     /* aka 1MB */
 
-  u3_Host.ops_u.siz_i =
-#if (defined(U3_CPU_aarch64) && defined(U3_OS_linux))
-  // 500 GiB is as large as musl on aarch64 wants to allow
-  0x7d00000000;
-#else
-  0x10000000000;
-#endif
-
+  if ( 0 == u3_Host.ops_u.siz_i ) {
+#   if defined(U3_CPU_aarch64) && defined(U3_OS_linux)
+      /// 500 GiB is as large as musl on aarch64 wants to allow
+      u3_Host.ops_u.siz_i = 0x7d00000000;
+#   else
+      u3_Host.ops_u.siz_i = 0x10000000000;
+#   endif
+  }
+  
   u3C.eph_c = 0;
   u3C.tos_w = 0;
 }
