@@ -1958,6 +1958,8 @@ u3_disk_init(c3_c* pax_c, u3_disk_cb cb_u)
       }
 
       if ( _epoc_good != _disk_epoc_load(log_u, 0) ) {
+        fprintf(stderr, "[DISK DEBUG] _disk_epoc_load failed (expected=%d, got=%d)\n", _epoc_good, _disk_epoc_load(log_u, 0));
+        
         fprintf(stderr, "disk: failed to initialize lmdb\r\n");
         c3_free(log_u);
         return 0;
@@ -1969,6 +1971,8 @@ u3_disk_init(c3_c* pax_c, u3_disk_cb cb_u)
     if ( c3y == exs_o ) {
       //  load the old data.mdb file
       if ( 0 == (log_u->mdb_u = u3_lmdb_init(log_c, u3_Host.ops_u.siz_i)) ) {
+        fprintf(stderr, "[DISK DEBUG] u3_lmdb_init failed for path='%s' with mapsize=%zu bytes\n", log_c, u3_Host.ops_u.siz_i);
+        
         fprintf(stderr, "disk: failed to initialize lmdb\r\n");
         c3_free(log_u);
         return 0;
