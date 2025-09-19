@@ -213,7 +213,7 @@ _main_init(void)
 static c3_c*
 _main_pier_run(c3_c* bin_c)
 {
-  fprintf(stderr, "[MAIN DEBUG] enter _main_pier_run: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fprintf(stderr, "[MAIN DEBUG] enter _main_pier_run callsite 214a: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   fflush(stderr);
 
   c3_c* dir_c = 0;
@@ -230,7 +230,7 @@ _main_pier_run(c3_c* bin_c)
     c3_free(bin_c);
   }
   
-  fprintf(stderr, "[MAIN DEBUG] exit _main_pier_run: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fprintf(stderr, "[MAIN DEBUG] exit _main_pier_run callsite 214b: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   fflush(stderr);
 
   return dir_c;
@@ -823,6 +823,10 @@ _cw_usage(c3_c* bin_c)
   };
 
   c3_c* d = _main_pier_run(bin_c);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run pseudo-callsite 825: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
   c3_i  i;
 
   for ( i=0; use_c[i]; i++ ) {
@@ -1627,6 +1631,10 @@ _cw_info(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 1633: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -1734,6 +1742,10 @@ _cw_grab(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 1744: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -1810,6 +1822,10 @@ _cw_cram(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 1824: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -1915,6 +1931,10 @@ _cw_queu(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 1933: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "r:", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2031,6 +2051,10 @@ _cw_meld(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2053: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2126,6 +2150,10 @@ _cw_melt(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2152: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2214,6 +2242,10 @@ _cw_next(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2244: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "a:", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2295,6 +2327,10 @@ _cw_pack(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2329: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2555,6 +2591,10 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
     c3_i  run_i = 0;
 
     c3_c* run_c = _main_pier_run(u3_Host.wrk_c);
+
+    fprintf(stderr, "[MAIN DEBUG] after _main_pier_run pseudo-callsite 2595: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+    fflush(stderr);
+
     if ( run_c ) {
       c3_free(run_c);
       run_i = 1;
@@ -2647,6 +2687,10 @@ _cw_play(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2689: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "fn:", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2751,6 +2795,10 @@ _cw_prep(c3_i argc, c3_c* argv[])
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
 
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2796: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
+
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
       case c3__loom: {
@@ -2825,6 +2873,10 @@ _cw_chop(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2875: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
@@ -2912,7 +2964,7 @@ _cw_roll(c3_i argc, c3_c* argv[])
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
 
-  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run (line 2907): u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 2965: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   fflush(stderr);
 
 
@@ -3108,6 +3160,10 @@ _cw_vile(c3_i argc, c3_c* argv[])
   };
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
+  
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run callsite 3162: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
