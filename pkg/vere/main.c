@@ -213,6 +213,9 @@ _main_init(void)
 static c3_c*
 _main_pier_run(c3_c* bin_c)
 {
+  fprintf(stderr, "[MAIN DEBUG] enter _main_pier_run: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
   c3_c* dir_c = 0;
   c3_w  bin_w = strlen(bin_c);
   c3_w  len_w = strlen(U3_BIN_ALIAS);
@@ -226,6 +229,9 @@ _main_pier_run(c3_c* bin_c)
     dir_c = _main_repath(dirname(bin_c));
     c3_free(bin_c);
   }
+  
+  fprintf(stderr, "[MAIN DEBUG] exit _main_pier_run: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
 
   return dir_c;
 }
@@ -2906,6 +2912,10 @@ _cw_roll(c3_i argc, c3_c* argv[])
 
   u3_Host.dir_c = _main_pier_run(argv[0]);
 
+  fprintf(stderr, "[MAIN DEBUG] after _main_pier_run (line 2907): u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
+
   while ( -1 != (ch_i=getopt_long(argc, argv, "", lop_u, &lid_i)) ) {
     switch ( ch_i ) {
       case 6: {  //  lmdb-map-size
@@ -2927,6 +2937,15 @@ _cw_roll(c3_i argc, c3_c* argv[])
       } break;
     }
   }
+  
+  /* DEBUG: dump argv[] and parsed mapsize immediately after option parsing */
+  fprintf(stderr, "[MAIN DEBUG] argv (count=%d):\n", argc);
+  for (int ai = 0; ai < argc; ai++) {
+    fprintf(stderr, "  argv[%d] = '%s'\n", ai, argv[ai]);
+  }
+  fprintf(stderr, "[MAIN DEBUG] u3_Host.ops_u.siz_i after getopt = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+  fflush(stderr);
+
 
   //  argv[optind] is always "roll"
   //
