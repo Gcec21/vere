@@ -196,6 +196,8 @@ _main_init(void)
   u3_Host.ops_u.lom_y = 31;
   u3_Host.ops_u.jum_y = 23;     /* aka 1MB */
 
+  fprintf(stderr, "[DEBUG main_init] setting default siz_i=%llu\n", u3_Host.ops_u.siz_i);
+
   if ( 0 == u3_Host.ops_u.siz_i ) {
 #   if defined(U3_CPU_aarch64) && defined(U3_OS_linux)
       /// 500 GiB is as large as musl on aarch64 wants to allow
@@ -204,6 +206,9 @@ _main_init(void)
       u3_Host.ops_u.siz_i = 0x10000000000;
 #   endif
   }
+
+  fprintf(stderr, "[DEBUG main_init] setting default siz_i=%llu\n", u3_Host.ops_u.siz_i);
+
   
   u3C.eph_c = 0;
   u3C.tos_w = 0;
