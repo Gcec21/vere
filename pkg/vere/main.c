@@ -1368,6 +1368,7 @@ _cw_eval_get_string(FILE* fil_u, size_t siz_i)
   c3_i   car_i;
   size_t len_i = 0;
   c3_c*  str_c = c3_malloc(siz_i); //  size is start size
+  fprintf(stderr, "[DEBUG cw_eval_get_string (Line 1366)] setting default siz_i=%llu\n", u3_Host.ops_u.siz_i);
 
   while( EOF != (car_i = fgetc(fil_u)) ){
     str_c[len_i++] = car_i;
@@ -1376,6 +1377,7 @@ _cw_eval_get_string(FILE* fil_u, size_t siz_i)
       str_c = c3_realloc(str_c, siz_i);
     }
   }
+  fprintf(stderr, "[DEBUG cw_eval_get_string] after line 1366: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   str_c[len_i++]='\0';
 
