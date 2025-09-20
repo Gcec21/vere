@@ -1027,8 +1027,6 @@ _cw_serf_send(u3_noun pel)
   c3_d  len_d;
   c3_y* byt_y;
 
-  fprintf(stderr, "[DEBUG _cw_serf_send] _cw_serf_send run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
-
 #ifdef SERF_TRACE_JAM
   u3t_event_trace("serf ipc jam", 'B');
 #endif
