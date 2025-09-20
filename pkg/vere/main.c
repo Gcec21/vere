@@ -2690,6 +2690,8 @@ _cw_play(c3_i argc, c3_c* argv[])
   c3_d eve_d = 0;
   c3_d sap_d = 0;
 
+  fprintf(stderr, "[cw_play DEBUG]: cw_play run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "loom",              required_argument, NULL, c3__loom },
     { "no-demand",         no_argument,       NULL, 6 },
