@@ -3447,8 +3447,8 @@ main(c3_i   argc,
     //
     case 2: {
       fprintf(stderr, "[DEBUG main] main case 2, break");
-      break
-    };
+      break;
+    }
   }
 
   _main_self_path();
