@@ -2699,6 +2699,7 @@ _cw_play(c3_i argc, c3_c* argv[])
     { "full",              no_argument,       NULL, 'f' },
     { "replay-to",         required_argument, NULL, 'n' },
     { "snap-at",           required_argument, NULL, 's' },
+    { "lmdb-map-size", required_argument, NULL, 10 },
     { NULL, 0, NULL, 0 }
   };
 
@@ -2732,6 +2733,13 @@ _cw_play(c3_i argc, c3_c* argv[])
       case 9: {  //  watch-replay
         wat_o = c3y;
       } break;
+
+      case 10: {  //  lmdb-map-size
+        if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          exit(1);
+        }
+        break;
+      }
 
       case 'f': {
         ful_o = c3y;
