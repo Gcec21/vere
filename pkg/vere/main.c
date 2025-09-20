@@ -3429,7 +3429,9 @@ main(c3_i   argc,
     //  no matching subcommand, parse arguments
     //
     case 0: {
+      fprintf(stderr, "[DEBUG main] main case 0, might check options");
       if ( c3n == _main_getopt(argc, argv) ) {
+        fprintf(stderr, "[DEBUG main] getopt success with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
         u3_ve_usage(argc, argv);
         return 1;
       }
@@ -3437,12 +3439,16 @@ main(c3_i   argc,
 
     //  ran subcommand
     case 1: {
+      fprintf(stderr, "[DEBUG main] main case 1, returning 0");
       return 0;
     }
 
     //  found subcommand, continue
     //
-    case 2: break;
+    case 2: {
+      fprintf(stderr, "[DEBUG main] main case 2, break");
+      break
+    };
   }
 
   _main_self_path();
