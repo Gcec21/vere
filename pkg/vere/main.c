@@ -264,6 +264,8 @@ _main_getopt(c3_i argc, c3_c** argv)
   c3_w arg_w;
   c3_o want_creat_o = c3n;
 
+  fprintf(stderr, "[DEBUG _main_getopt] _main_getopt run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "arvo",                required_argument, NULL, 'A' },
     { "abort",               no_argument,       NULL, 'a' },
@@ -372,6 +374,7 @@ _main_getopt(c3_i argc, c3_c** argv)
       }
       case 12: { //  lmdb-map-size
         if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          fprintf(stderr, "[DEBUG _main_getopt] lmdb-map-size parsed with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
           return c3n;
         }
 
@@ -1024,6 +1027,8 @@ _cw_serf_send(u3_noun pel)
   c3_d  len_d;
   c3_y* byt_y;
 
+  fprintf(stderr, "[DEBUG _cw_serf_send] _cw_serf_send run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
 #ifdef SERF_TRACE_JAM
   u3t_event_trace("serf ipc jam", 'B');
 #endif
@@ -1321,6 +1326,7 @@ _cw_serf_commence(c3_i argc, c3_c* argv[])
 static u3_disk*
 _cw_disk_init(c3_c* dir_c)
 {
+  fprintf(stderr, "[DEBUG _cw_disk_init] _cw_disk_init run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   u3_disk_cb cb_u = {0};
   u3_disk*  log_u = u3_disk_init(dir_c, cb_u);
 
@@ -1337,6 +1343,7 @@ _cw_disk_init(c3_c* dir_c)
 static void
 _cw_dock(c3_i argc, c3_c* argv[])
 {
+  fprintf(stderr, "[DEBUG _cw_dock] _cw_dock run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   switch ( argc ) {
     case 2: {
       if ( !(u3_Host.dir_c = _main_pier_run(argv[0])) ) {
@@ -1395,6 +1402,8 @@ _cw_eval_get_newt(FILE* fil_u, c3_d* len_d)
   c3_y  hed_y = sizeof(((u3_mess*)NULL)->hed_u.hed_y);
   c3_y* byt_y = c3_malloc(hed_y);
 
+  fprintf(stderr, "[DEBUG _cw_eval_get_newt] _cw_eval_get_newt run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   for ( i = 0; i < hed_y; ++i ) {
     byt_y[i] = fgetc(fil_u);
   }
@@ -1429,6 +1438,8 @@ _cw_eval(c3_i argc, c3_c* argv[])
   c3_o    jam_o = c3n;
   c3_o    kan_o = c3n;
   c3_o    new_o = c3n;
+
+  fprintf(stderr, "[DEBUG _cw_eval] _cw_eval run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "loom", required_argument,  NULL, c3__loom },
@@ -1628,6 +1639,8 @@ _cw_info(c3_i argc, c3_c* argv[])
 {
   c3_i lid_i, ch_i;
   c3_w arg_w;
+  fprintf(stderr, "[DEBUG _cw_info] _cw_info run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
 
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
@@ -1741,6 +1754,8 @@ _cw_grab(c3_i argc, c3_c* argv[])
   c3_i lid_i, ch_i;
   c3_w arg_w;
 
+  fprintf(stderr, "[DEBUG _cw_grab] _cw_grab run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "loom",      required_argument, NULL, c3__loom },
     { "no-demand", no_argument,       NULL, 6 },
@@ -1819,6 +1834,8 @@ _cw_cram(c3_i argc, c3_c* argv[])
 {
   c3_i ch_i, lid_i;
   c3_w arg_w;
+
+  fprintf(stderr, "[DEBUG _cw_cram] _cw_cram run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
@@ -1927,6 +1944,8 @@ _cw_queu(c3_i argc, c3_c* argv[])
   c3_i  lid_i, ch_i;
   c3_w  arg_w;
   c3_c* roc_c = 0;
+
+  fprintf(stderr, "[DEBUG _cw_queu] _cw_queu run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
@@ -2048,6 +2067,8 @@ _cw_meld(c3_i argc, c3_c* argv[])
   c3_i ch_i, lid_i;
   c3_w arg_w;
 
+  fprintf(stderr, "[DEBUG _cw_meld] _cw_meld run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
     { "no-demand",     no_argument,       NULL, 6 },
@@ -2096,6 +2117,7 @@ _cw_meld(c3_i argc, c3_c* argv[])
 
       case 10: {  //  lmdb-map-size
         if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          fprintf(stderr, "[DEBUG _cw_meld] lmdb-map-size parsed as u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
           exit(1);
         }
         break;
@@ -2148,6 +2170,8 @@ _cw_melt(c3_i argc, c3_c* argv[])
   c3_i ch_i, lid_i;
   c3_w arg_w;
 
+  fprintf(stderr, "[DEBUG _cw_melt] _cw_melt run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "loom",      required_argument, NULL, c3__loom },
     { "no-demand", no_argument,       NULL, 6 },
@@ -2196,6 +2220,7 @@ _cw_melt(c3_i argc, c3_c* argv[])
 
       case 10: {  //  lmdb-map-size
         if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          fprintf(stderr, "[DEBUG _cw_melt] lmdb-map-size parsed as u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
           exit(1);
         }
         break;
@@ -2247,6 +2272,8 @@ _cw_next(c3_i argc, c3_c* argv[])
 {
   c3_i ch_i, lid_i;
   c3_w arg_w;
+
+  fprintf(stderr, "[DEBUG _cw_next] _cw_next run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "arch",      required_argument, NULL, 'a' },
@@ -2332,6 +2359,8 @@ _cw_pack(c3_i argc, c3_c* argv[])
   c3_i ch_i, lid_i;
   c3_w arg_w;
 
+  fprintf(stderr, "[DEBUG _cw_paxk] _cw_pack run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
     { "no-demand",     no_argument,       NULL, 6 },
@@ -2380,6 +2409,7 @@ _cw_pack(c3_i argc, c3_c* argv[])
 
       case 10: {  //  lmdb-map-size
         if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          fprintf(stderr, "[DEBUG _cw_pack] lmdb-map-size parsed as u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
           exit(1);
         }
         break;
@@ -2427,6 +2457,7 @@ _cw_pack(c3_i argc, c3_c* argv[])
 static void
 _cw_play_slog(u3_noun hod)
 {
+  fprintf(stderr, "[DEBUG _cw_play_slog] _cw_play_slog run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   u3_pier_tank(0, 0, u3k(u3t(hod)));
   u3z(hod);
 }
@@ -2436,6 +2467,7 @@ _cw_play_slog(u3_noun hod)
 static void
 _cw_play_snap(u3_disk* log_u)
 {
+  fprintf(stderr, "[DEBUG _cw_play_snap] _cw_play_snap run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   c3_c chk_c[8193], epo_c[8193];
   snprintf(chk_c, 8193, "%s/.urb/chk", u3_Host.dir_c);
   snprintf(epo_c, 8192, "%s/0i%" PRIc3_d, log_u->com_u->pax_c, log_u->epo_d);
@@ -2468,6 +2500,7 @@ _cw_play_snap(u3_disk* log_u)
 static void
 _cw_play_exit(c3_i int_i)
 {
+  fprintf(stderr, "[DEBUG _cw_plqy_exit] _cw_play_exit run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   kill(getpid(), SIGINT);
 }
 
@@ -2476,6 +2509,7 @@ _cw_play_exit(c3_i int_i)
 static c3_d
 _cw_play_impl(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
 {
+  fprintf(stderr, "[DEBUG _cw_play_impl] _cw_play_impl run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
   c3_d pay_d;
 
   //  XX handle SIGTSTP so that the lockfile is not orphaned?
@@ -2548,6 +2582,7 @@ _cw_play_fork_heed(void* arg) {
   // XX
   c3_c buf[1];
   c3_zs red;
+  fprintf(stderr, "[DEBUG _cw_play_fork_heed] _cw_play_fork_heed run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   sigset_t set;
 
@@ -2594,6 +2629,7 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
   c3_c sap_c[21] = {0};
   c3_c lom_c[3]  = {0};
   c3_i ret_i;
+  fprintf(stderr, "[DEBUG _cw_play_fork] _cw_play_fork run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   ret_i = snprintf(eve_c, sizeof(eve_c), "%" PRIu64, eve_d);
   u3_assert( ret_i && ret_i < sizeof(eve_c) );
@@ -2738,6 +2774,7 @@ _cw_play(c3_i argc, c3_c* argv[])
 
       case 10: {  //  lmdb-map-size
         if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          fprintf(stderr, "[DEBUG _cw_play] parsed lmdb-map-size as u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
           exit(1);
         }
         break;
@@ -2810,6 +2847,8 @@ _cw_prep(c3_i argc, c3_c* argv[])
   //     check that new epoch is empty, migrate snapshot in-place
   c3_i ch_i, lid_i;
   c3_w arg_w;
+
+  fprintf(stderr, "[DEBUG _cw_prep] _cw_prep run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "loom",      required_argument, NULL, c3__loom },
@@ -2888,6 +2927,8 @@ _cw_chop(c3_i argc, c3_c* argv[])
 {
   c3_i ch_i, lid_i;
   c3_w arg_w;
+
+  fprintf(stderr, "[DEBUG _cw_chop] _cw_chop run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
@@ -2982,6 +3023,8 @@ _cw_roll(c3_i argc, c3_c* argv[])
   c3_i ch_i, lid_i;
   c3_w arg_w;
 
+  fprintf(stderr, "[DEBUG _ce_roll] _cw_roll run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
+
   static struct option lop_u[] = {
     { "loom",          required_argument, NULL, c3__loom },
     { "lmdb-map-size", required_argument, NULL, 6 },
@@ -2998,6 +3041,7 @@ _cw_roll(c3_i argc, c3_c* argv[])
     switch ( ch_i ) {
       case 6: {  //  lmdb-map-size
         if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          fprintf(stderr, "[DEBUG _cw_roll] lmdb-map-size parsed as u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
           exit(1);
         }
         break;
@@ -3068,6 +3112,8 @@ _cw_vere(c3_i argc, c3_c* argv[])
 
   c3_i ch_i, lid_i;
   c3_w arg_w;
+
+  fprintf(stderr, "[DEBUG _cw_vere] _cw_vere run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "arch",    required_argument, NULL, 'a' },
@@ -3176,6 +3222,8 @@ _cw_vile(c3_i argc, c3_c* argv[])
 {
   c3_i ch_i, lid_i;
   c3_w arg_w;
+
+  fprintf(stderr, "[DEBUG _cw_vile] _cw_vile run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   static struct option lop_u[] = {
     { "loom",      required_argument, NULL, c3__loom },
@@ -3313,6 +3361,8 @@ _cw_utils(c3_i argc, c3_c* argv[])
   //    other streams may be used for ipc.
   //
   c3_m mot_m = 0;
+
+  fprintf(stderr, "[DEBUG _cw_utils] _cw_utils run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   if ( 2 <= argc ) {
     if ( 4 == strlen(argv[1]) ) {
