@@ -2154,6 +2154,7 @@ _cw_melt(c3_i argc, c3_c* argv[])
     { "swap",      no_argument,       NULL, 7 },
     { "swap-to",   required_argument, NULL, 8 },
     { "gc-early",  no_argument,       NULL, 9 },
+    { "lmdb-map-size", required_argument, NULL, 10 },
     { NULL, 0, NULL, 0 }
   };
 
@@ -2190,6 +2191,13 @@ _cw_melt(c3_i argc, c3_c* argv[])
 
       case 9: {  //  gc-early
         u3C.wag_w |= u3o_check_corrupt;
+        break;
+      }
+
+      case 10: {  //  lmdb-map-size
+        if ( 1 != sscanf(optarg, "%" SCNuMAX, &u3_Host.ops_u.siz_i) ) {
+          exit(1);
+        }
         break;
       }
 
