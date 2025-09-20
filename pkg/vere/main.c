@@ -196,7 +196,7 @@ _main_init(void)
   u3_Host.ops_u.lom_y = 31;
   u3_Host.ops_u.jum_y = 23;     /* aka 1MB */
 
-  fprintf(stderr, "[DEBUG main_init] setting default siz_i=%llu\n", u3_Host.ops_u.siz_i);
+  fprintf(stderr, "[DEBUG main init (pre)]: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   if ( 0 == u3_Host.ops_u.siz_i ) {
 #   if defined(U3_CPU_aarch64) && defined(U3_OS_linux)
@@ -207,7 +207,7 @@ _main_init(void)
 #   endif
   }
 
-  fprintf(stderr, "[DEBUG main_init] setting default siz_i=%llu\n", u3_Host.ops_u.siz_i);
+  fprintf(stderr, "[DEBUG main init (post)]: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   
   u3C.eph_c = 0;
@@ -1368,7 +1368,7 @@ _cw_eval_get_string(FILE* fil_u, size_t siz_i)
   c3_i   car_i;
   size_t len_i = 0;
   c3_c*  str_c = c3_malloc(siz_i); //  size is start size
-  fprintf(stderr, "[DEBUG cw_eval_get_string (Line 1366)] setting default siz_i=%llu\n", u3_Host.ops_u.siz_i);
+  fprintf(stderr, "[DEBUG _cw_eval_get_string]: u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
   while( EOF != (car_i = fgetc(fil_u)) ){
     str_c[len_i++] = car_i;
