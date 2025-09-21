@@ -2628,10 +2628,6 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
   c3_c lom_c[3]  = {0};
   c3_i ret_i;
   fprintf(stderr, "[DEBUG _cw_play_fork] _cw_play_fork run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
-  for (int i = 0; args[i] != 0; i++) {
-  fprintf(stderr, "[cw_play_fork pre check] args[%d] = %s\n", i, args[i]);
-}
-
 
   ret_i = snprintf(eve_c, sizeof(eve_c), "%" PRIu64, eve_d);
   u3_assert( ret_i && ret_i < sizeof(eve_c) );
@@ -2704,9 +2700,6 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
   options.exit_cb = (uv_exit_cb)_cw_play_fork_exit;
 
   c3_i sat_i;
-  for (int i = 0; args[i] != 0; i++) {
-  fprintf(stderr, "[cw_play_fork argv] args[%d] = %s\n", i, args[i]);
-}
   if ( 0 != (sat_i = uv_spawn(u3L, &child_req, &options)) ) {
     fprintf(stderr, "play: uv_spawn: %s\r\n", uv_strerror(sat_i));
     return 1;
