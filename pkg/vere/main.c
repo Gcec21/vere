@@ -198,8 +198,8 @@ _main_init(void)
 
   u3_Host.ops_u.siz_i =
 #if (defined(U3_CPU_aarch64) && defined(U3_OS_linux))
-  // 500 GiB is as large as musl on aarch64 wants to allow
-  0x7d00000000;
+  // 184 GiB is as large as proot on aarch64 Termux wants to allow
+  0x2E00000000;
 #else
   0x10000000000;
 #endif
