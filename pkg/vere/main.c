@@ -2722,6 +2722,7 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
 static void
 _cw_play(c3_i argc, c3_c* argv[])
 {
+  _main_getopt(argc, argv);
   c3_i lid_i, ch_i;
   c3_w arg_w;
   c3_o ful_o = c3n;
