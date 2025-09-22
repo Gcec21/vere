@@ -2626,6 +2626,7 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
   c3_c eve_c[21] = {0};
   c3_c sap_c[21] = {0};
   c3_c lom_c[3]  = {0};
+  c3_c map_c[32] = {0};
   c3_i ret_i;
   fprintf(stderr, "[DEBUG _cw_play_fork] _cw_play_fork run with u3_Host.ops_u.siz_i = %zu\n", (size_t)u3_Host.ops_u.siz_i);
 
@@ -2635,6 +2636,8 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
   u3_assert( ret_i && ret_i < sizeof(sap_c) );
   ret_i = snprintf(lom_c, sizeof(lom_c), "%u", u3_Host.ops_u.lom_y);
   u3_assert( ret_i && ret_i < sizeof(lom_c) );
+  ret_i = snprintf(map_c, sizeof(map_c), "%" SCNuMAX, u3_Host.ops_u.siz_i);
+  u3_assert( ret_i && ret_i < sizeof(map_c) );
 
   {
     c3_z    i_z = 0;
@@ -2655,6 +2658,8 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
     argv[i_z++] = "--watch-replay";
     argv[i_z++] = "--loom";
     argv[i_z++] = lom_c;
+    argv[i_z++] = "--lmdb-map-size";
+    argv[i_z++] = map_c;
     argv[i_z++] = "--replay-to";
     argv[i_z++] = eve_c;
     argv[i_z++] = "--snap-at";
@@ -2715,7 +2720,6 @@ _cw_play_fork(c3_d eve_d, c3_d sap_d, c3_o mel_o, c3_o sof_o, c3_o ful_o)
 static void
 _cw_play(c3_i argc, c3_c* argv[])
 {
-  _main_getopt(argc, argv);
   c3_i lid_i, ch_i;
   c3_w arg_w;
   c3_o ful_o = c3n;
@@ -2736,7 +2740,7 @@ _cw_play(c3_i argc, c3_c* argv[])
     { "full",              no_argument,       NULL, 'f' },
     { "replay-to",         required_argument, NULL, 'n' },
     { "snap-at",           required_argument, NULL, 's' },
-    { "lmdb-map-size", required_argument, NULL, 10 },
+    { "lmdb-map-size",     required_argument, NULL, 10 },
     { NULL, 0, NULL, 0 }
   };
 
