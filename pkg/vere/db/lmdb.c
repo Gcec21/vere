@@ -56,12 +56,20 @@ u3_lmdb_init(const c3_c* pax_c, size_t siz_i)
     //
     return 0;
   }
+  
+  /* ---------- INSERT DEBUG: report requested mapsize ---------- */
+  fprintf(stderr, "[LMDB DEBUG] u3_lmdb_init: requested mapsize = %zu bytes (%.2f MiB)\n", siz_i, siz_i / (1024.0 * 1024.0));
+  /* ---------- END DEBUG ---------- */
 
   if ( (ret_w = mdb_env_set_mapsize(env_u, siz_i)) ) {
+    fprintf(stderr, "[LMDB DEBUG] mdb_env_set_mapsize failed: code=%u (%s)\n", (unsigned)ret_w, mdb_strerror(ret_w));
+    
     mdb_logerror(stderr, ret_w, "lmdb: failed to set database size");
     //  XX dispose env_u
     //
     return 0;
+  } else {
+    fprintf(stderr, "[LMDB DEBUG] mdb_env_set_mapsize succeeded\n");
   }
 
   {
@@ -70,12 +78,20 @@ u3_lmdb_init(const c3_c* pax_c, size_t siz_i)
 #   else
       c3_w ops_w = 0;
 #   endif
+    
+    /* ---------- INSERT DEBUG: about to call mdb_env_open ---------- */
+    fprintf(stderr, "[LMDB DEBUG] calling mdb_env_open(path='%s', flags=0x%x)\n", pax_c, ops_w | MDB_NOLOCK);
+    /* ---------- END DEBUG ---------- */
 
     if ( (ret_w = mdb_env_open(env_u, pax_c, ops_w, 0664)) ) {
+      fprintf(stderr, "[LMDB DEBUG] mdb_env_open failed: code=%u (%s)\n", (unsigned)ret_w, mdb_strerror(ret_w));
+      
       mdb_logerror(stderr, ret_w, "lmdb: failed to open event log");
       //  XX dispose env_u
       //
       return 0;
+    } else {
+    fprintf(stderr, "[LMDB DEBUG] mdb_env_open succeeded\n");
     }
   }
 
